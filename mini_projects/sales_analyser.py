@@ -1,8 +1,7 @@
 import os
 from google import genai
 from dotenv import load_dotenv
-from pydantic import BaseModel, Field
-from pprint import pprint
+from pydantic import BaseModel
 
 load_dotenv()
 model = "gemini-3.5-flash-lite"
@@ -30,8 +29,8 @@ def read_block():
     print("Enter sales details, then press Enter on an empty line:")
     lines = []
     while True:
-        line = input()
-        if not line.strip():
+        line = input().strip()
+        if line == "END":
             break
         lines.append(line)
     return "\n".join(lines)
@@ -52,4 +51,4 @@ interaction = client.interactions.create(
 
 response = SalesAnalysis.model_validate_json(interaction.output_text)
 
-pprint("Response: ", response)
+print("Response: ", response)
