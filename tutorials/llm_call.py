@@ -16,7 +16,7 @@ Rules:
 3. Do not hallucinate, if you do not know something, say so.
 """
 
-generation_config = {"temperature": 0.7, "max_output_tokens": 200}
+generation_config = {"temperature": 0.7, "max_output_tokens": 50}
 
 if not API_KEY:
     raise ValueError(
@@ -51,7 +51,7 @@ def stream_api_response(input):
 
 
 try:
-    user_input = input("Enter your query:")
+    user_input = input("Enter your query: ")
     response = get_api_response(user_input)
     print(f"Response: {response}")
     # stream_api_response(user_input)
