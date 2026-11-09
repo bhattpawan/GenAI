@@ -1,6 +1,22 @@
 from ollama import chat
 
-messages = []
+MAX_CONV_LIMIT = 10
+
+system_message = {
+    "role": "system",
+    "content": """
+        You are a helpful assistant.
+
+        Follow these rules:
+        1. Explain concepts in simple language.
+        2. Prefer practical examples over theory.
+        3. Prefer python for any code examples.
+        4. Keep answers concise.
+        5. If you don't know something, say so. Do not hallucinate.
+        """,
+}
+
+messages = [system_message]
 
 while True:
     user_input = input("You: ").strip()
@@ -12,9 +28,15 @@ while True:
         break
 
     if user_input.lower() == "reset":
-        messages = []
+        messages = [system_message]
         print("Conversation history has been reset.")
         continue
+
+    if len(messages) >= MAX_CONV_LIMIT:
+        print(
+            f"Conversation history limit of {MAX_CONV_LIMIT} reached. Resetting conversation."
+        )
+        messages = [system_message] + messages[-(MAX_CONV_LIMIT - 1) :]
 
     messages.append({"role": "user", "content": user_input})
 
