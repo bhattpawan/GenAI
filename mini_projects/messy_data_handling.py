@@ -34,7 +34,7 @@ class SalesExtraction(BaseModel):
 
 
 response = chat(
-    model="qwen3:1.7b",
+    model="gemma4:e4b",
     messages=messages,
     format=SalesExtraction.model_json_schema(),
     think=False,

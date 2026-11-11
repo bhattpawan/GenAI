@@ -43,7 +43,7 @@ while True:
     assistant_response = ""
 
     try:
-        response = chat(model="qwen3:1.7b", messages=messages, think=False, stream=True)
+        response = chat(model="gemma4:e4b", messages=messages, think=False, stream=True)
         print("Assistant: ", end="", flush=True)
         for chunk in response:
             content = chunk.message.content or ""

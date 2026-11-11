@@ -36,7 +36,7 @@ user_message = {"role": "user", "content": user_input}
 messages = [system_message, user_message]
 
 response = chat(
-    model="qwen3:1.7b",
+    model="gemma4:e4b",
     messages=messages,
     format=SalesExtraction.model_json_schema(),
     think=False,

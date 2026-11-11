@@ -9,12 +9,12 @@ messages = [
 
 
 def generate_response(messages):
-    response = chat(model="qwen3:1.7b", messages=messages, think=False)
+    response = chat(model="gemma4:e4b", messages=messages, think=False)
     return response.message.content
 
 
 def stream_response(messages):
-    stream = chat(model="qwen3:1.7b", messages=messages, think=False, stream=True)
+    stream = chat(model="gemma4:e4b", messages=messages, think=False, stream=True)
     for chunk in stream:
         print(chunk.message.content, end="", flush=True)
 
