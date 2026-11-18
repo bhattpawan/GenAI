@@ -11,4 +11,3 @@ response = client.responses.create(
 )
 
 print(response.output_text)
-
