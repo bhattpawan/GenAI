@@ -58,6 +58,9 @@ while True:
                 print(event.delta, end="", flush=True)
             elif event.type == "response.completed":
                 previous_response_id = event.response.id
+            elif event.type == "response.failed":
+                print("\nResponse failed.")
+                break
         print()
 
     except Exception as e:
